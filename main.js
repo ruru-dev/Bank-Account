@@ -1,9 +1,10 @@
+//create a class called BankAccount
 class BankAccount {
 
   constructor(_accountNumber, _owner)
   {
     this.accountNumber = _accountNumber;
-    this.owner = owner;
+    this.owner = _owner;
   }
 
   transactions = [];
@@ -29,14 +30,13 @@ class BankAccount {
 
   }
 
+  //gets the deposit
   deposit(amt) {
     let currTransaction = new Transaction(amt, this.owner)
-    console.log(currTransaction.date)
+    this.transactions.push(currTransaction)
   }
 
   charge(payee, amt) {
-
-    
     let currTransaction = new Transaction(amt*-1, payee)
     this.transactions.push(currTransaction)
   }
@@ -57,6 +57,9 @@ class Transaction {
   date = ''
 }
 
-let myFirstBankAccount = new BankAccount("account")
+let myFirstBankAccount = new BankAccount('account', 'Rachel')
 
-let myFirstTransaction = new Transaction(12.50, )
+myFirstBankAccount.deposit(12)
+myFirstBankAccount.deposit(20)
+myFirstBankAccount.charge('Starbucks', 6)
+myFirstBankAccount.balance()
